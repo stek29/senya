@@ -1,14 +1,21 @@
-version: '3.9'
-
 services:
   senya:
-    image: ghcr.io/stek29/senya
-    build: .
+    # network_mode: bridge
     ports:
-      - 5000:5000
-    env:
-      SENYA_MODEL_PATH: models/model.npz
+    - mode: ingress
+      target: 5000
+      published: 5000
+      protocol: tcp
+
+    image: ghcr.io/stek29/senya
+    build:
+      context: .
+
     volumes:
-      - ./models:/app/models:ro
-    command: >-
-      --workers 1
+    - ./models:/app/models:ro
+    environment:
+      SENYA_MODEL_PATH: models/model.npz
+
+      GUNICORN_CMD_ARGS: >-
+        --workers 1
+    # command: --workers 1
