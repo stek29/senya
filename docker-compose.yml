@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  senya:
+    image: ghcr.io/stek29/senya
+    build: .
+    ports:
+      - 5000:5000
+    env:
+      SENYA_MODEL_PATH: models/model.npz
+    volumes:
+      - ./models:/app/models:ro
+    command: >-
+      --workers 1

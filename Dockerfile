@@ -19,5 +19,4 @@ RUN pip install -r requirements.txt
 USER app
 COPY . .
 
-ENV GUNICORN_CMD_ARGS=
 ENTRYPOINT [ "docker/start.sh" ]
