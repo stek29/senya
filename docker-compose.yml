@@ -7,6 +7,7 @@ services:
       published: 5000
       protocol: tcp
 
+    restart: unless-stopped
     image: ghcr.io/stek29/senya
     build:
       context: .
