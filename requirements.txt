@@ -1,0 +1,9 @@
+# forced in dockerfile
+face_recognition_models
+dlib>=19.3.0
+
+numpy
+Pillow
+flask
+
+gunicorn==20.1.0
